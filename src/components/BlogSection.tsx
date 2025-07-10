@@ -1,33 +1,36 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Clock, User } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const BlogSection = () => {
+  const { t, dir } = useLanguage();
+  
   const blogPosts = [
     {
       id: 1,
-      title: "How to Cook with a Tagine: A Complete Guide",
-      excerpt: "Learn the traditional techniques for preparing authentic Moroccan dishes using your tagine. From seasoning to serving, master this ancient cooking method.",
-      author: "Aicha Benali",
-      readTime: "8 min read",
+      titleKey: "blog.post1.title",
+      excerptKey: "blog.post1.excerpt",
+      authorKey: "blog.post1.author",
+      readTimeKey: "blog.post1.readTime",
       date: "March 15, 2024",
       image: "/placeholder.svg?height=200&width=300"
     },
     {
       id: 2,
-      title: "Traditional Moroccan Chicken Tagine Recipe",
-      excerpt: "Discover our family recipe for the perfect chicken tagine with preserved lemons and olives. A dish that brings the taste of Morocco to your table.",
-      author: "Omar Kadiri",
-      readTime: "6 min read",
+      titleKey: "blog.post2.title",
+      excerptKey: "blog.post2.excerpt",
+      authorKey: "blog.post2.author",
+      readTimeKey: "blog.post2.readTime",
       date: "March 10, 2024",
       image: "/placeholder.svg?height=200&width=300"
     },
     {
       id: 3,
-      title: "Caring for Your Clay Cookware",
-      excerpt: "Essential tips for maintaining and seasoning your traditional clay pots to ensure they last for generations while improving their cooking performance.",
-      author: "Fatima El Alami",
-      readTime: "5 min read",
+      titleKey: "blog.post3.title",
+      excerptKey: "blog.post3.excerpt",
+      authorKey: "blog.post3.author",
+      readTimeKey: "blog.post3.readTime",
       date: "March 5, 2024",
       image: "/placeholder.svg?height=200&width=300"
     }
@@ -38,11 +41,10 @@ const BlogSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Learn & <span className="text-moroccan-terracotta">Discover</span>
+            {t('blog.title')} <span className="text-moroccan-terracotta">{t('blog.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Dive into the rich culinary traditions of Morocco with our guides, recipes, 
-            and stories that connect you to centuries of cooking wisdom.
+            {t('blog.subtitle')}
           </p>
         </div>
         
@@ -53,7 +55,7 @@ const BlogSection = () => {
                 <div className="relative overflow-hidden rounded-t-lg">
                   <img 
                     src={post.image} 
-                    alt={post.title}
+                    alt={t(post.titleKey)}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 bg-moroccan-clay/20"
                   />
                 </div>
@@ -61,25 +63,25 @@ const BlogSection = () => {
               
               <CardContent className="p-6">
                 <CardTitle className="text-lg mb-3 text-foreground leading-tight">
-                  {post.title}
+                  {t(post.titleKey)}
                 </CardTitle>
                 <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                  {post.excerpt}
+                  {t(post.excerptKey)}
                 </p>
                 
-                <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
-                  <div className="flex items-center space-x-1">
+                <div className={`flex items-center justify-between text-xs text-muted-foreground mb-4 ${dir === 'rtl' ? 'flex-row-reverse' : ''}`}>
+                  <div className={`flex items-center space-x-1 ${dir === 'rtl' ? 'space-x-reverse' : ''}`}>
                     <User className="h-3 w-3" />
-                    <span>{post.author}</span>
+                    <span>{t(post.authorKey)}</span>
                   </div>
-                  <div className="flex items-center space-x-1">
+                  <div className={`flex items-center space-x-1 ${dir === 'rtl' ? 'space-x-reverse' : ''}`}>
                     <Clock className="h-3 w-3" />
-                    <span>{post.readTime}</span>
+                    <span>{t(post.readTimeKey)}</span>
                   </div>
                 </div>
                 
                 <Button variant="outline" className="w-full border-moroccan-terracotta text-moroccan-terracotta hover:bg-moroccan-terracotta hover:text-white">
-                  Read Article
+                  {t('blog.readArticle')}
                 </Button>
               </CardContent>
             </Card>
@@ -88,7 +90,7 @@ const BlogSection = () => {
         
         <div className="text-center mt-12">
           <Button size="lg" className="bg-moroccan-terracotta hover:bg-moroccan-copper">
-            View All Articles
+            {t('blog.viewAll')}
           </Button>
         </div>
       </div>

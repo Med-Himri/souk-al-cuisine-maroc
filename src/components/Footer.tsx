@@ -1,6 +1,9 @@
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t, dir } = useLanguage();
+  
   return (
     <footer className="bg-moroccan-spice text-white py-16">
       <div className="container mx-auto px-4">
