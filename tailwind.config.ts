@@ -52,6 +52,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				moroccan: {
+					terracotta: 'hsl(var(--moroccan-terracotta))',
+					gold: 'hsl(var(--moroccan-gold))',
+					clay: 'hsl(var(--moroccan-clay))',
+					spice: 'hsl(var(--moroccan-spice))',
+					sand: 'hsl(var(--moroccan-sand))',
+					copper: 'hsl(var(--moroccan-copper))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
